@@ -2,7 +2,6 @@
     promptname: .asciiz "introduza o seu nome: "
     score: .word 2
 
-    q0: .asciiz "question 0"
     q1: .asciiz "question 1"
     q2: .asciiz "question 2"
     q3: .asciiz "question 3"
@@ -35,8 +34,6 @@
     q28: .asciiz "question 28"
     q29: .asciiz "question 29"
     q30: .asciiz "question 30"
-    q31: .asciiz "question 31"
-    q32: .asciiz "question 32"
     
         
 .text
