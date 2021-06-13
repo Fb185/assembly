@@ -50,5 +50,5 @@ display correct answers
 ##End game
 
 Display total score
-<------------------->
+
 ask if user wants to try again
