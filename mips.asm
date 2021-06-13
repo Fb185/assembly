@@ -1,6 +1,8 @@
 .data
     promptname: .asciiz "introduza o seu nome: "
     score: .word 2
+    filename: .asciiz "helloworld.txt"
+    filewords: .space 1024 # buffer
 
     q1: .asciiz "question 1"
     q2: .asciiz "question 2"
@@ -38,64 +40,27 @@
         
 .text
 
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
+#reading file
+    li $v0, 13  ## syscall code for open file = 13
+    la $a0, perguntas
+    li $a1, 0 # file flag = read(0)
+    syscall
+    move $s0, $v0  #save the file descriptor
 
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
+    li $v0, 14  ## syscall for read file
+    move $a0, $s0 #file descriptor
+    la $a1, filewords  ## buffer that hods string of the entire file
+    syscall
 
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-    q1:
-        li $v0, 4 
-        la $a0, q1
-        syscall
-
-
+    #print whats in the file
+    li $v0, 4  #syscall read code = 4
+    la $a0, filewords
+    syscall
+     
+    # close file
+    li $v0, 16  #syscall to close
+    move $a0, $s0
+    syscall
 
 
 
